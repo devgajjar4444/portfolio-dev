@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+:root {
+  --background: #08080a;
+  --foreground: #ededef;
+  --card: #111114;
+  --card-hover: #1a1a1f;
+  --border: #232328;
+  --muted: #9494a0;
+  --accent: #d4a574;
+  --accent-dim: rgba(212, 165, 116, 0.12);
+  --accent-glow: rgba(212, 165, 116, 0.25);
+  --surface: #0e0e11;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-surface: var(--surface);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: #08080a;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #d4a574 0%, #e8c9a8 45%, #c9956a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: filter 0.35s ease;
+}
+
+.gradient-text:hover {
+  filter: brightness(1.2);
+}
+
+.noise-bg {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.marquee-left {
+  animation: marquee-left 40s linear infinite;
+}
+
+.marquee-right {
+  animation: marquee-right 45s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.mask-fade {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.header-glass {
+  background: rgba(8, 8, 10, 0.55);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  backdrop-filter: blur(16px) saturate(1.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Shared hover system ── */
+.hover-card {
+  transition:
+    transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    background-color 0.35s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 165, 116, 0.35);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(212, 165, 116, 0.1);
+  background-color: var(--card-hover);
+}
+
+.hover-btn-accent {
+  transition:
+    transform 0.25s cubic-bezier(0.25, 0.1, 0.25, 1),
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.hover-btn-accent:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px var(--accent-glow);
+}
+
+.hover-btn-accent:active {
+  transform: translateY(0);
+}
+
+.hover-btn-ghost {
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease,
+    transform 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.hover-btn-ghost:hover {
+  color: var(--foreground);
+  background-color: rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
+}
+
+.hover-nav-pill {
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.hover-nav-pill:hover {
+  color: var(--foreground);
+  background-color: rgba(255, 255, 255, 0.07);
+  transform: translateY(-1px);
+}
+
+.hover-tag {
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s cubic-bezier(0.25, 0.1, 0.25, 1),
+    box-shadow 0.25s ease;
+}
+
+.hover-tag:hover {
+  border-color: rgba(212, 165, 116, 0.45);
+  background-color: var(--accent-dim);
+  color: var(--foreground);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.hover-icon-wrap {
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+    box-shadow 0.3s ease;
+}
+
+.group:hover .hover-icon-wrap {
+  background-color: rgba(212, 165, 116, 0.18);
+  border-color: rgba(212, 165, 116, 0.3);
+  transform: scale(1.08);
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+
+.hover-round-btn {
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s cubic-bezier(0.25, 0.1, 0.25, 1),
+    box-shadow 0.25s ease;
+}
+
+.hover-round-btn:hover:not(:disabled) {
+  border-color: rgba(212, 165, 116, 0.5);
+  background-color: var(--accent-dim);
+  color: var(--accent);
+  transform: scale(1.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hover-round-btn:active:not(:disabled) {
+  transform: scale(1);
+}
+
+.hover-dot {
+  transition:
+    background-color 0.3s ease,
+    width 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+    transform 0.3s ease;
+}
+
+.hover-dot:hover {
+  background-color: var(--muted);
+  transform: scaleY(1.4);
+}
+
+.hover-link {
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.hover-link:hover {
+  color: var(--accent);
+  transform: translateX(2px);
+}
+
+.hover-arrow-btn .hover-arrow {
+  transition: transform 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.hover-arrow-btn:hover .hover-arrow {
+  transform: translateX(3px);
+}
