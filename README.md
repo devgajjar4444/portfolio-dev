@@ -2,10 +2,20 @@
 
 Responsive portfolio website built with **Next.js**, **TypeScript**, and **Tailwind CSS**.
 
-## Run
+## Project structure
+
+```
+portfolio-dev/
+├── src/           # Next.js app (pages, components, data)
+├── public/        # Static assets
+├── mobile/        # Expo React Native app (separate)
+├── package.json   # Web app dependencies
+└── ...
+```
+
+## Run (web)
 
 ```bash
-cd web
 npm install
 npm run dev      # http://localhost:3000
 npm run build    # production build
@@ -13,20 +23,20 @@ npm run build    # production build
 
 ## Deploy on Vercel
 
-The Next.js app is inside `web/`. Vercel must build from that folder.
+The Next.js app is at the **repo root**. Vercel auto-detects it — no Root Directory override needed.
 
-1. **Settings** → **General** → **Root Directory** → set to `web` → **Save**
-2. **Settings** → **Build and Deployment** → reset overrides to defaults:
-   - Framework Preset: **Next.js**
-   - Build Command: *(empty — use default)*
-   - Install Command: *(empty — use default)*
-   - Output Directory: *(empty — use default)*
-3. **Deployments** → **Redeploy** (uncheck "Use existing Build Cache")
+1. Framework Preset: **Next.js** (auto-detected)
+2. Build Command / Install Command / Output Directory: leave as defaults
+3. If you previously set Root Directory to `web`, **clear it** (set back to `/`)
+4. Redeploy
 
-| Error | Cause |
-|-------|-------|
-| `404: NOT_FOUND` | Root Directory is `/` instead of `web` |
-| `next: command not found` | Root Directory is `/` — deps install at repo root, not in `web/` |
+## Run (mobile)
+
+```bash
+cd mobile
+npm install
+npx expo start
+```
 
 ## Features
 
