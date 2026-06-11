@@ -13,15 +13,20 @@ npm run build    # production build
 
 ## Deploy on Vercel
 
-The Next.js app lives in the `web/` folder (not the repo root). In Vercel:
+The Next.js app is inside `web/`. Vercel must build from that folder.
 
-1. Open your project → **Settings** → **General**
-2. Set **Root Directory** to `web` → click **Save**
-3. Go to **Deployments** → **Redeploy** the latest deployment
+1. **Settings** → **General** → **Root Directory** → set to `web` → **Save**
+2. **Settings** → **Build and Deployment** → reset overrides to defaults:
+   - Framework Preset: **Next.js**
+   - Build Command: *(empty — use default)*
+   - Install Command: *(empty — use default)*
+   - Output Directory: *(empty — use default)*
+3. **Deployments** → **Redeploy** (uncheck "Use existing Build Cache")
 
-Framework should auto-detect as **Next.js**. Build command: `npm run build`. No extra config needed.
-
-> If you see `404: NOT_FOUND`, the Root Directory is almost certainly wrong (still pointing at `/` instead of `web`).
+| Error | Cause |
+|-------|-------|
+| `404: NOT_FOUND` | Root Directory is `/` instead of `web` |
+| `next: command not found` | Root Directory is `/` — deps install at repo root, not in `web/` |
 
 ## Features
 
@@ -36,4 +41,3 @@ Framework should auto-detect as **Next.js**. Build command: `npm run build`. No 
 - **Email:** devgajjar0132@gmail.com
 - **Phone:** 9974440132
 - **LinkedIn:** https://www.linkedin.com/in/dev-gajjar
-# portfolio-dev
