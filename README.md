@@ -2,18 +2,7 @@
 
 Responsive portfolio website built with **Next.js**, **TypeScript**, and **Tailwind CSS**.
 
-## Project structure
-
-```
-portfolio-dev/
-├── src/           # Next.js app (pages, components, data)
-├── public/        # Static assets
-├── mobile/        # Expo React Native app (separate)
-├── package.json   # Web app dependencies
-└── ...
-```
-
-## Run (web)
+## Run
 
 ```bash
 npm install
@@ -23,20 +12,7 @@ npm run build    # production build
 
 ## Deploy on Vercel
 
-The Next.js app is at the **repo root**. Vercel auto-detects it — no Root Directory override needed.
-
-1. Framework Preset: **Next.js** (auto-detected)
-2. Build Command / Install Command / Output Directory: leave as defaults
-3. If you previously set Root Directory to `web`, **clear it** (set back to `/`)
-4. Redeploy
-
-## Run (mobile)
-
-```bash
-cd mobile
-npm install
-npx expo start
-```
+Next.js app at the repo root — auto-detected by Vercel. Use default build settings and redeploy.
 
 ## Features
 
